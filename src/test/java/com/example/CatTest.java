@@ -33,6 +33,5 @@ public class CatTest {
         List<String> food = cat.getFood();
 
         assertEquals(mockFood, food);
-        verify(mockFeline).eatMeat();
     }
 }

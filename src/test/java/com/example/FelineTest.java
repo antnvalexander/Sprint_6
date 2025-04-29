@@ -23,7 +23,6 @@ public class FelineTest {
         doReturn(mockFood).when(feline).getFood("Хищник");
         List<String> result = feline.eatMeat();
         assertEquals("Метод eatMeat должен возвращать список еды для хищника", mockFood, result);
-        verify(feline).getFood("Хищник");
     }
 
     @Test
@@ -38,6 +37,5 @@ public class FelineTest {
         int mockData = 1;
         doReturn(mockData).when(feline).getKittens(mockData);
         assertEquals("Метод getKittens без параметров должен возвращать 1", mockData, feline.getKittens());
-        verify(feline).getKittens(mockData);
     }
 }

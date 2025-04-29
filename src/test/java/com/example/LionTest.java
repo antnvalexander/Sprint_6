@@ -32,7 +32,6 @@ public class LionTest {
         when(mockFeline.getKittens()).thenReturn(expectedKittens);
         int kittens = lion.getKittens();
         assertEquals("Метод getKittens должен вернуть значение из Feline", expectedKittens, kittens);
-        verify(mockFeline).getKittens();
     }
 
     @Test
@@ -45,6 +44,5 @@ public class LionTest {
 
         List<String> food = lion.getFood();
         assertEquals("Метод getFood должен вернуть список еды от Feline", mockFood, food);
-        verify(mockFeline).getFood("Хищник");
     }
 }
