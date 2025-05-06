@@ -2,6 +2,8 @@ package com.example;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -9,11 +11,12 @@ import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThrows;
+import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTest {
 
-    @Spy
+    @Mock
     Feline feline;
 
     @Test
@@ -25,16 +28,20 @@ public class LionTest {
     @Test
     public void getKittensReturnsValueFromFeline() throws Exception {
         Lion lion = new Lion("Самец", feline);
+        Lion lionSpy = Mockito.spy(lion);
         int expectedKittens = 1;
-        int kittens = lion.getKittens();
+        when(feline.getKittens()).thenReturn(expectedKittens);
+        int kittens = lionSpy.getKittens();
         assertEquals("Метод getKittens должен вернуть значение из Feline", expectedKittens, kittens);
     }
 
     @Test
     public void getFoodReturnsFelineFood() throws Exception {
         Lion lion = new Lion("Самка", feline);
+        Lion lionSpy = Mockito.spy(lion);
         List<String> expectedFood = List.of("Животные", "Птицы", "Рыба");
-        List<String> food = lion.getFood();
+        when(feline.getFood("Хищник")).thenReturn(expectedFood);
+        List<String> food = lionSpy.getFood();
         assertEquals("Метод getFood должен вернуть список еды от Feline", expectedFood, food);
     }
 }
