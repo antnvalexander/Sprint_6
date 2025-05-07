@@ -19,7 +19,7 @@ public class FelineTest {
     @Test
     public void eatMeatReturnsCorrectFoodList() throws Exception {
         List<String> mockFood = List.of("Животные", "Птицы", "Рыба");
-        List<String> result = felineSpy.eatMeat();
+        List<String> result = feline.eatMeat();
         assertEquals("Метод eatMeat должен возвращать список еды для хищника", mockFood, result);
     }
 
